@@ -205,6 +205,10 @@ func (h *GroupItemHandler) CreateItem(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "title and url required")
 		return
 	}
+	if err := ValidateItemURL(req.URL); err != nil {
+		writeError(w, http.StatusBadRequest, err.Error())
+		return
+	}
 	if req.Icon == "" {
 		req.Icon = "mdi:link"
 	}
@@ -318,6 +322,10 @@ func (h *GroupItemHandler) UpdateItem(w http.ResponseWriter, r *http.Request) {
 		item.Description = *req.Description
 	}
 	if req.URL != nil {
+		if err := ValidateItemURL(*req.URL); err != nil {
+			writeError(w, http.StatusBadRequest, err.Error())
+			return
+		}
 		item.URL = *req.URL
 	}
 	if req.Icon != nil {
