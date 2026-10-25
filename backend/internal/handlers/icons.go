@@ -41,7 +41,7 @@ const (
 	selfhstCDNURL   = "https://cdn.jsdelivr.net/gh/selfhst/icons@main"
 )
 
-var iconNamePattern = regexp.MustCompile(`^[A-Za-z0-9_.-]+$`)
+var iconNamePattern = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9_.-]*$`)
 
 type selfhstIcon struct {
 	Name      string `json:"Name"`
