@@ -90,7 +90,7 @@ func main() {
 	r.Use(handlers.SecurityHeaders)
 	r.Use(handlers.LimitBody)
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:5173", "http://localhost:8080", "*"},
+		AllowedOrigins:   []string{"http://localhost:5173", "http://localhost:8080"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type"},
 		AllowCredentials: true,
